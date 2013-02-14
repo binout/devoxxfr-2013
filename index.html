@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app>
+
+<head>
+    <title>Devoxxfr 2013</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min.js"></script>
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand">Devoxxfr 2013</a>
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li class="active"><a>Planning</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br/><br/><br/>
+
+<div class='container' ng-controller="PresCtrl">
+    <div class='row'>
+        <div class="span1">&nbsp;
+        </div>
+        <div class="span11">&nbsp;
+            <form class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label" for="inputQuery">Recherche : </label>
+
+                    <div class="controls">
+                        <input ng-model="query" id="inputQuery" type="text" autofocus="autofocus" class="input-medium search-query"/>
+                    </div>
+                </div>
+            </form>
+
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th>Type</th>
+                    <th>Track</th>
+                    <th>Title</th>
+                    <th>Speaker</th>
+                </tr>
+                <tr ng-repeat="p in presentations | filter:query">
+                    <td>{{p.type}}</td>
+                    <td>{{p.track}}</td>
+                    <td><a target="_blank" href="http://cfp.devoxx.com/rest/v1/events/presentations/{{p.id}}">{{p.title}}</a></td>
+                    <td><a target="_blank" href="{{p.speakerUri}}">{{p.speaker}}</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+
+    var url = "http://cfp.devoxx.com/rest/v1/events/8/presentations";
+    var jsonpUrl = url + "?callback=JSON_CALLBACK";
+
+    function PresCtrl($scope, $http) {
+        $scope.presentations = [];
+        $http.jsonp(jsonpUrl).
+                success(function(data) {
+                    $scope.presentations = data;
+                }).
+                error(function(data) {
+                    $scope.presentations = data || "Request failed";
+                });
+
+    }
+</script>
+</html>
