@@ -47,12 +47,16 @@
                     <th>Track</th>
                     <th>Title</th>
                     <th>Speaker</th>
+                    <th>Experience</th>
+                    <th>Language</th>
                 </tr>
                 <tr ng-repeat="p in presentations | filter:query">
                     <td>{{p.type}}</td>
                     <td>{{p.track}}</td>
                     <td><a target="_blank" href="http://cfp.devoxx.com/rest/v1/events/presentations/{{p.id}}">{{p.title}}</a></td>
                     <td><a target="_blank" href="{{p.speakerUri}}">{{p.speaker}}</a></td>
+                    <td>{{p.experience}}</td>
+                    <td><img height="32px" width="32px" src="img/{{p.language}}.png"/></td>
                 </tr>
             </table>
         </div>
@@ -67,13 +71,12 @@
     function PresCtrl($scope, $http) {
         $scope.presentations = [];
         $http.jsonp(jsonpUrl).
-                success(function(data) {
-                    $scope.presentations = data;
-                }).
-                error(function(data) {
-                    $scope.presentations = data || "Request failed";
-                });
-
+            success(function(data) {
+                $scope.presentations = data;
+            }).
+            error(function(data) {
+                $scope.presentations = data || "Request failed";
+            });
     }
 </script>
 </html>
