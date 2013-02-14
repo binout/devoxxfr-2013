@@ -17,8 +17,8 @@
             <a class="brand">Devoxxfr 2013</a>
             <div class="nav-collapse">
                 <ul class="nav">
-                    <li class="active"><a>Planning</a></li>
-                    <li><a href="speakers.html">Speakers</a></li>
+                    <li><a href="index.html">Planning</a></li>
+                    <li class="active"><a>Speakers</a></li>
                 </ul>
             </div>
         </div>
@@ -27,7 +27,7 @@
 
 <br/><br/><br/>
 
-<div class='container' ng-controller="PresCtrl">
+<div class='container' ng-controller="SpeakersCtrl">
     <div class='row'>
         <div class="span1">&nbsp;
         </div>
@@ -44,20 +44,16 @@
 
             <table class="table table-striped table-bordered">
                 <tr>
-                    <th>Type</th>
-                    <th>Track</th>
-                    <th>Title</th>
-                    <th>Speaker</th>
-                    <th>Experience</th>
-                    <th>Language</th>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Company</th>
+                    <th>Twitter</th>
                 </tr>
-                <tr ng-repeat="p in presentations | filter:query">
-                    <td>{{p.type}}</td>
-                    <td>{{p.track}}</td>
-                    <td><a target="_blank" href="http://cfp.devoxx.com/rest/v1/events/presentations/{{p.id}}">{{p.title}}</a></td>
-                    <td><a target="_blank" href="{{p.speakerUri}}">{{p.speaker}}</a></td>
-                    <td>{{p.experience}}</td>
-                    <td><img height="32px" width="32px" src="img/{{p.language}}.png"/></td>
+                <tr ng-repeat="s in speakers | filter:query">
+                    <td><img src="{{s.imageURI}}"/></td>
+                    <td>{{s.firstName}} {{s.lastName}}</td>
+                    <td>{{s.company}}</td>
+                    <td>{{s.tweethandle}}</td>
                 </tr>
             </table>
         </div>
@@ -66,17 +62,17 @@
 </body>
 <script>
 
-    var url = "http://cfp.devoxx.com/rest/v1/events/8/presentations";
+    var url = "https://cfp.devoxx.com/rest/v1/events/8/speakers";
     var jsonpUrl = url + "?callback=JSON_CALLBACK";
 
-    function PresCtrl($scope, $http) {
-        $scope.presentations = [];
+    function SpeakersCtrl($scope, $http) {
+        $scope.speakers = [];
         $http.jsonp(jsonpUrl).
             success(function(data) {
-                $scope.presentations = data;
+                $scope.speakers = data;
             }).
             error(function(data) {
-                $scope.presentations = data || "Request failed";
+                $scope.speakers = data || "Request failed";
             });
     }
 </script>
