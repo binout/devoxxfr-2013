@@ -14,7 +14,7 @@
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand">Devoxxfr 2013</a>
+            <a target="_blank" href="http://devoxx.fr" class="brand">Devoxxfr 2013</a>
             <div class="nav-collapse">
                 <ul class="nav">
                     <li><a href="index.html">Planning</a></li>
@@ -48,7 +48,7 @@
             </tr>
             <tr ng-repeat="s in speakers | filter:query">
                 <td><img height="48px" width="48px" src="{{s.imageURI}}"/></td>
-                <td>{{s.firstName}} {{s.lastName}}</td>
+                <td><a href="speaker.html#?id={{s.id}}">{{s.firstName}} {{s.lastName}}</a></td>
                 <td>{{s.company}}</td>
                 <td>{{s.tweethandle}}</td>
             </tr>
