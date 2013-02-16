@@ -7,6 +7,7 @@
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min.js"></script>
+    <script src="js/controller.js"></script>
 </head>
 
 <body>
@@ -27,7 +28,7 @@
 
 <br/><br/><br/>
 
-<div class='container' ng-controller="SpeakersCtrl">
+<div class='container' ng-controller="SpeakerCtrl">
     <div class='row'>
         <div class="page-header">
             <h1>{{speaker.firstName}} {{speaker.lastName}}</h1>
@@ -63,20 +64,4 @@
     </div>
 </div>
 </body>
-<script>
-    var url = "http://cfp.devoxx.com/rest/v1/events/speakers/";
-    var jsonpSuffix = "?callback=JSON_CALLBACK";
-
-    function SpeakersCtrl($scope, $http, $location) {
-        var speakerId = $location.search()['id'];
-        var jsonpUrl = url + speakerId +jsonpSuffix;
-        $http.jsonp(jsonpUrl).
-            success(function(data) {
-                $scope.speaker = data;
-            }).
-            error(function(data) {
-                $scope.speaker = data || "Request failed";
-            });
-    }
-</script>
 </html>
