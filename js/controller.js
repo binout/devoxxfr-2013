@@ -12,7 +12,8 @@ function PresCtrl($scope, $http) {
         });
 }
 
-var speakersUrl = "https://cfp.devoxx.com/rest/v1/events/8/speakers";
+//var speakersUrl = "https://cfp.devoxx.com/rest/v1/events/8/speakers";
+var speakersUrl = "https://devoxxmirror-laps33.rhcloud.com/rest/speakers";
 function SpeakersCtrl($scope, $http) {
     $scope.speakers = [];
     $http.jsonp(speakersUrl+jsonpSuffix).
