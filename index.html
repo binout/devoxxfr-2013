@@ -7,6 +7,7 @@
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min.js"></script>
+    <script src="js/controller.js"></script>
 </head>
 
 <body>
@@ -60,20 +61,4 @@
     </div>
 </div>
 </body>
-<script>
-
-    var url = "http://cfp.devoxx.com/rest/v1/events/8/presentations";
-    var jsonpUrl = url + "?callback=JSON_CALLBACK";
-
-    function PresCtrl($scope, $http) {
-        $scope.presentations = [];
-        $http.jsonp(jsonpUrl).
-            success(function(data) {
-                $scope.presentations = data;
-            }).
-            error(function(data) {
-                $scope.presentations = data || "Request failed";
-            });
-    }
-</script>
 </html>

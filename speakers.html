@@ -7,6 +7,7 @@
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min.js"></script>
+    <script src="js/controller.js"></script>
 </head>
 
 <body>
@@ -50,31 +51,11 @@
                 <td><img height="48px" width="48px" src="{{s.imageURI}}"/></td>
                 <td><a href="speaker.html#?id={{s.id}}">{{s.firstName}} {{s.lastName}}</a></td>
                 <td>{{s.company}}</td>
-                <td>Tweet to
-                    <a href="https://twitter.com/intent/tweet?screen_name={{s.tweethandle}}" class="twitter-mention-button" data-lang="en">
-                        <b>{{s.tweethandle}}</b></span>
-                    </a>
-                </td>
+                <td><a href="https://twitter.com/intent/tweet?screen_name={{s.tweethandle}}" class="twitter-mention-button" data-lang="en"><b>{{s.tweethandle}}</b></span></a></td>
             </tr>
         </table>
     </div>
 </div>
 </body>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<script>
-    //var url = "https://cfp.devoxx.com/rest/v1/events/8/speakers";
-	var url = "https://devoxxmirror-laps33.rhcloud.com/rest/speakers";
-    var jsonpUrl = url + "?callback=JSON_CALLBACK";
-
-    function SpeakersCtrl($scope, $http) {
-        $scope.speakers = [];
-        $http.jsonp(jsonpUrl).
-            success(function(data) {
-                $scope.speakers = data;
-            }).
-            error(function(data) {
-                $scope.speakers = data || "Request failed";
-            });
-    }
-</script>
 </html>
