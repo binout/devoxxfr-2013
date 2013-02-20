@@ -1,6 +1,8 @@
 var jsonpSuffix = "?callback=JSON_CALLBACK";
 
-var presUrl = "http://cfp.devoxx.com/rest/v1/events/8/presentations";
+//var presUrl = "http://cfp.devoxx.com/rest/v1/events/8/presentations";
+var presUrl = "https://devoxxmirror-laps33.rhcloud.com/rest/talks";
+
 function PresCtrl($scope, $http) {
     $scope.presentations = [];
     $http.jsonp(presUrl+jsonpSuffix).
@@ -25,7 +27,9 @@ function SpeakersCtrl($scope, $http) {
         });
 }
 
-var speakerUrl = "http://cfp.devoxx.com/rest/v1/events/speakers/";
+//var speakerUrl = "http://cfp.devoxx.com/rest/v1/events/speakers/";
+var speakerUrl = "https://devoxxmirror-laps33.rhcloud.com/rest/speakers/";
+
 function SpeakerCtrl($scope, $http, $location) {
     var speakerId = $location.search()['id'];
     var jsonpUrl = speakerUrl + speakerId + jsonpSuffix;
@@ -38,7 +42,9 @@ function SpeakerCtrl($scope, $http, $location) {
         });
 }
 
-var prezUrl = "https://cfp.devoxx.com/rest/v1/events/presentations/";
+//var prezUrl = "https://cfp.devoxx.com/rest/v1/events/presentations/";
+var prezUrl = "https://devoxxmirror-laps33.rhcloud.com/rest/talks/";
+
 function TalkCtrl($scope, $http, $location) {
     var prezId = $location.search()['talkId'];
     var prezJsonpUrl = prezUrl + prezId + jsonpSuffix;
