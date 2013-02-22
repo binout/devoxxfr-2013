@@ -1,24 +1,24 @@
+var backendUrl = "https://devoxxmirror-laps33.rhcloud.com/rest";
 var jsonpSuffix = "?callback=JSON_CALLBACK";
 
-//var presUrl = "http://cfp.devoxx.com/rest/v1/events/8/presentations";
-var presUrl = "https://devoxxmirror-laps33.rhcloud.com/rest/talks";
+function TalksCtrl($scope, $http) {
+    $scope.talks = [];
+    var jsonpUrl = backendUrl + "/talks" + jsonpSuffix;
 
-function PresCtrl($scope, $http) {
-    $scope.presentations = [];
-    $http.jsonp(presUrl+jsonpSuffix).
+    $http.jsonp(jsonpUrl).
         success(function(data) {
-            $scope.presentations = data;
+            $scope.talks = data;
         }).
         error(function(data) {
-            $scope.presentations = data || "Request failed";
+            $scope.talks = data || "Request failed";
         });
 }
 
-//var speakersUrl = "https://cfp.devoxx.com/rest/v1/events/8/speakers";
-var speakersUrl = "https://devoxxmirror-laps33.rhcloud.com/rest/speakers";
 function SpeakersCtrl($scope, $http) {
     $scope.speakers = [];
-    $http.jsonp(speakersUrl+jsonpSuffix).
+    var jsonpUrl = backendUrl + "/speakers" + jsonpSuffix;
+
+    $http.jsonp(jsonpUrl).
         success(function(data) {
             $scope.speakers = data;
         }).
@@ -27,12 +27,10 @@ function SpeakersCtrl($scope, $http) {
         });
 }
 
-//var speakerUrl = "http://cfp.devoxx.com/rest/v1/events/speakers/";
-var speakerUrl = "https://devoxxmirror-laps33.rhcloud.com/rest/speakers/";
-
 function SpeakerCtrl($scope, $http, $location) {
     var speakerId = $location.search()['id'];
-    var jsonpUrl = speakerUrl + speakerId + jsonpSuffix;
+    var jsonpUrl = backendUrl + "/speakers/" + speakerId + jsonpSuffix;
+
     $http.jsonp(jsonpUrl).
         success(function(data) {
             $scope.speaker = data;
@@ -42,14 +40,11 @@ function SpeakerCtrl($scope, $http, $location) {
         });
 }
 
-//var prezUrl = "https://cfp.devoxx.com/rest/v1/events/presentations/";
-var prezUrl = "https://devoxxmirror-laps33.rhcloud.com/rest/talks/";
-
 function TalkCtrl($scope, $http, $location) {
-    var prezId = $location.search()['talkId'];
-    var prezJsonpUrl = prezUrl + prezId + jsonpSuffix;
+    var prezId = $location.search()['id'];
+    var jsonpUrl = backendUrl + "/talks/" + prezId + jsonpSuffix;
 
-    $http.jsonp(prezJsonpUrl).
+    $http.jsonp(jsonpUrl).
         success(function(data) {
             $scope.talk = data;
         }).

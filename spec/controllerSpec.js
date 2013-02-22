@@ -9,26 +9,27 @@ describe('Controllers', function() {
         });
     });
 
-    describe("PresCtrl", function () {
+    describe("TalksCtrl", function () {
         var scope, ctrl, $httpBackend;
+        var jsonpUrl = backendUrl + "/talks" + jsonpSuffix;
 
         beforeEach(inject(function (_$httpBackend_, $rootScope, $controller) {
             $httpBackend = _$httpBackend_;
-            $httpBackend.whenJSONP(presUrl+jsonpSuffix).respond([{"id": 2767,
+            $httpBackend.whenJSONP(jsonpUrl).respond([{"id": 2767,
                 "speakerUri": "http://cfp.devoxx.com/rest/v1/events/speakers/2487",
                 "title": "Faciliter le dÃ©veloppement d’applications Web hors-ligne en JAVA avec GWT"}]);
 
             scope = $rootScope.$new();
-            ctrl = $controller(PresCtrl, {$scope: scope});
+            ctrl = $controller(TalksCtrl, {$scope: scope});
         }));
 
         it('should init presentations', function () {
-            expect(scope.presentations).toEqual([]);
+            expect(scope.talks).toEqual([]);
         });
 
         it('should fetch rest backend', function () {
             $httpBackend.flush();
-            expect(scope.presentations).toEqualData([{"id": 2767,
+            expect(scope.talks).toEqualData([{"id": 2767,
                 "speakerUri": "http://cfp.devoxx.com/rest/v1/events/speakers/2487",
                 "title": "Faciliter le dÃ©veloppement d’applications Web hors-ligne en JAVA avec GWT"}]);
         });

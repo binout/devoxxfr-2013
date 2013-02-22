@@ -28,7 +28,7 @@
 
 <br/><br/><br/>
 
-<div class='container' ng-controller="PresCtrl">
+<div class='container' ng-controller="TalksCtrl">
     <div class='row'>
         <form class="form-horizontal">
             <div class="control-group">
@@ -49,13 +49,13 @@
                 <th>Experience</th>
                 <th>Language</th>
             </tr>
-            <tr ng-repeat="p in presentations | filter:query">
-                <td>{{p.type}}</td>
-                <td>{{p.track}}</td>
-                <td><a href="talk.html#?talkId={{p.id}}">{{p.title}}</a></td>
-                <td><a href="speaker.html#?id={{p.speakerId}}">{{p.speaker}}</a></td>
-                <td>{{p.experience}}</td>
-                <td><img height="32px" width="32px" src="img/{{p.language}}.png"/></td>
+            <tr ng-repeat="talk in talks | filter:query">
+                <td>{{talk.type}}</td>
+                <td>{{talk.track}}</td>
+                <td><a href="talk.html#?id={{talk.id}}">{{talk.title}}</a></td>
+                <td><a href="speaker.html#?id={{talk.speakerId}}">{{talk.speaker}}</a></td>
+                <td>{{talk.experience}}</td>
+                <td><img height="32px" width="32px" src="img/{{talk.language}}.png"/></td>
             </tr>
         </table>
     </div>
