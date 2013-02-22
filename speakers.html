@@ -47,11 +47,11 @@
                 <th>Company</th>
                 <th>Twitter</th>
             </tr>
-            <tr ng-repeat="s in speakers | filter:query">
-                <td><img height="48px" width="48px" src="{{s.imageURI}}"/></td>
-                <td><a href="speaker.html#?id={{s.id}}">{{s.firstName}} {{s.lastName}}</a></td>
-                <td>{{s.company}}</td>
-                <td><a href="https://twitter.com/intent/tweet?screen_name={{s.tweethandle}}" class="twitter-mention-button" data-lang="en"><b>{{s.tweethandle}}</b></span></a></td>
+            <tr ng-repeat="speaker in speakers | filter:query">
+                <td><img height="48px" width="48px" src="{{speaker.imageURI}}"/></td>
+                <td><a href="speaker.html#?id={{speaker.id}}">{{speaker.firstName}} {{speaker.lastName}}</a></td>
+                <td>{{speaker.company}}</td>
+                <td><a href="https://twitter.com/intent/tweet?screen_name={{speaker.tweethandle}}" class="twitter-mention-button" data-lang="en"><b>{{speaker.tweethandle}}</b></span></a></td>
             </tr>
         </table>
     </div>
