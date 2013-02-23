@@ -9,6 +9,15 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min.js"></script>
     <script src="js/controller.js"></script>
+    <style>
+        .sort-true::before {
+            content: '↓';
+        }
+
+        .sort-false::before {
+            content: '↑';
+        }
+    </style>
 </head>
 
 <body>
@@ -44,11 +53,11 @@
         <table class="table table-striped table-bordered">
             <tr>
                 <th></th>
-                <th>Name</th>
-                <th>Company</th>
-                <th>Twitter</th>
+                <th ng-class="selectedCls('lastName')" ng-click="changeSorting('lastName')">Name</th>
+                <th ng-class="selectedCls('company')" ng-click="changeSorting('company')">Company</th>
+                <th ng-class="selectedCls('tweethandle')" ng-click="changeSorting('tweethandle')">Twitter</th>
             </tr>
-            <tr ng-repeat="speaker in speakers | filter:query">
+            <tr ng-repeat="speaker in speakers | filter:query | orderBy:sort.column:sort.descending">
                 <td><img height="48px" width="48px" src="{{speaker.imageURI}}"/></td>
                 <td><a href="speaker.html#?id={{speaker.id}}">{{speaker.firstName}} {{speaker.lastName}}</a></td>
                 <td>{{speaker.company}}</td>

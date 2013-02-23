@@ -44,6 +44,25 @@ function SpeakersCtrl($scope, $http) {
         error(function(data) {
             $scope.speakers = data || "Request failed";
         });
+
+    $scope.sort = {
+        column: 'lastName',
+        descending: false
+    }
+
+    $scope.selectedCls = function (column) {
+        return column === $scope.sort.column && 'sort-' + $scope.sort.descending;
+    }
+
+    $scope.changeSorting = function (column) {
+        var sort = $scope.sort;
+        if (sort.column === column) {
+            sort.descending = !sort.descending;
+        } else {
+            sort.column = column;
+            sort.descending = false;
+        }
+    }
 }
 
 function SpeakerCtrl($scope, $http, $location) {
