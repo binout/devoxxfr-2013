@@ -91,3 +91,31 @@ function TalkCtrl($scope, $http, $location) {
         });
 
 }
+
+function ScheduleCtrl($scope, $http) {
+    var dayOneUrl = backendUrl + "/schedule/day/1" + jsonpSuffix;
+    $http.jsonp(dayOneUrl).
+        success(function(data) {
+            $scope.dayone = data;
+        }).
+        error(function(data) {
+            $scope.dayone = data || "Request failed";
+        });
+    var dayTwoUrl = backendUrl + "/schedule/day/2" + jsonpSuffix;
+    $http.jsonp(dayTwoUrl).
+        success(function(data) {
+            $scope.daytwo = data;
+        }).
+        error(function(data) {
+            $scope.daytwo = data || "Request failed";
+        });
+    var dayThreeUrl = backendUrl + "/schedule/day/3" + jsonpSuffix;
+    $http.jsonp(dayThreeUrl).
+        success(function(data) {
+            $scope.daythree = data;
+        }).
+        error(function(data) {
+            $scope.daythree = data || "Request failed";
+        });
+
+}
