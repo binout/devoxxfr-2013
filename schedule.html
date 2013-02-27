@@ -53,8 +53,8 @@
                 <th>Speaker</th>
             </tr>
             <tr ng-repeat="event in dayone | filter:query">
-                <td>{{event.fromTime}}</td>
-                <td>{{event.toTime}}</td>
+                <td>{{event.fromHour}}</td>
+                <td>{{event.toHour}}</td>
                 <td>{{event.room}}</td>
                 <td><a href="talk.html#?id={{event.presentationId}}">{{event.title}}</a></td>
                 <td><a href="speaker.html#?id={{event.speakerId}}">{{event.speaker}}</a></td>
@@ -72,8 +72,8 @@
                 <th>Speaker</th>
             </tr>
             <tr ng-repeat="event in daytwo | filter:query">
-                <td>{{event.fromTime}}</td>
-                <td>{{event.toTime}}</td>
+                <td>{{event.fromHour}}</td>
+                <td>{{event.toHour}}</td>
                 <td>{{event.room}}</td>
                 <td><a href="talk.html#?id={{event.presentationId}}">{{event.title}}</a></td>
                 <td><a href="speaker.html#?id={{event.speakerId}}">{{event.speaker}}</a></td>
@@ -91,8 +91,8 @@
                 <th>Speaker</th>
             </tr>
             <tr ng-repeat="event in daythree | filter:query">
-                <td>{{event.fromTime}}</td>
-                <td>{{event.toTime}}</td>
+                <td>{{event.fromHour}}</td>
+                <td>{{event.toHour}}</td>
                 <td>{{event.room}}</td>
                 <td><a href="talk.html#?id={{event.presentationId}}">{{event.title}}</a></td>
                 <td><a href="speaker.html#?id={{event.speakerId}}">{{event.speaker}}</a></td>
