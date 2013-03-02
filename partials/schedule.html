@@ -1,36 +1,4 @@
-<!DOCTYPE html>
-<html ng-app>
 
-<head>
-    <title>Devoxxfr 2013</title>
-    <meta charset='utf-8'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min.js"></script>
-    <script src="js/controller.js"></script>
-</head>
-
-<body>
-
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a target="_blank" href="http://devoxx.fr" class="brand">Devoxxfr 2013</a>
-            <div class="nav-collapse">
-                <ul class="nav">
-                    <li class="active"><a>Schedule</a></li>
-                    <li><a href="talks.html">Talks</a></li>
-                    <li><a href="speakers.html">Speakers</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-<br/><br/><br/>
-
-<div class='container' ng-controller="ScheduleCtrl">
     <div class='row'>
         <form class="form-horizontal">
             <div class="control-group">
@@ -56,8 +24,8 @@
                 <td>{{event.fromHour}}</td>
                 <td>{{event.toHour}}</td>
                 <td>{{event.room}}</td>
-                <td><a href="talk.html#?id={{event.presentationId}}">{{event.title}}</a></td>
-                <td><a href="speaker.html#?id={{event.speakerId}}">{{event.speaker}}</a></td>
+                <td><a href="#/talks/{{event.presentationId}}">{{event.title}}</a></td>
+                <td><a href="#/speakers/{{event.speakerId}}">{{event.speaker}}</a></td>
             </tr>
         </table>
     </div>
@@ -75,8 +43,8 @@
                 <td>{{event.fromHour}}</td>
                 <td>{{event.toHour}}</td>
                 <td>{{event.room}}</td>
-                <td><a href="talk.html#?id={{event.presentationId}}">{{event.title}}</a></td>
-                <td><a href="speaker.html#?id={{event.speakerId}}">{{event.speaker}}</a></td>
+                <td><a href="#/talks/{{event.presentationId}}">{{event.title}}</a></td>
+                <td><a href="#/speakers/{{event.speakerId}}">{{event.speaker}}</a></td>
             </tr>
         </table>
     </div>
@@ -94,11 +62,8 @@
                 <td>{{event.fromHour}}</td>
                 <td>{{event.toHour}}</td>
                 <td>{{event.room}}</td>
-                <td><a href="talk.html#?id={{event.presentationId}}">{{event.title}}</a></td>
-                <td><a href="speaker.html#?id={{event.speakerId}}">{{event.speaker}}</a></td>
+                <td><a href="#/talks/{{event.presentationId}}">{{event.title}}</a></td>
+                <td><a href="#/speakers/{{event.speakerId}}">{{event.speaker}}</a></td>
             </tr>
         </table>
     </div>
-</div>
-</body>
-</html>

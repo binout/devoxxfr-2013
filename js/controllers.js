@@ -65,9 +65,9 @@ function SpeakersCtrl($scope, $http) {
     }
 }
 
-function SpeakerCtrl($scope, $http, $location) {
-    var speakerId = $location.search()['id'];
-    var jsonpUrl = backendUrl + "/speakers/" + speakerId + jsonpSuffix;
+function SpeakerCtrl($scope, $http, $routeParams) {
+    $scope.speakerId = $routeParams.speakerId;
+    var jsonpUrl = backendUrl + "/speakers/" + $scope.speakerId + jsonpSuffix;
 
     $http.jsonp(jsonpUrl).
         success(function(data) {
@@ -78,9 +78,9 @@ function SpeakerCtrl($scope, $http, $location) {
         });
 }
 
-function TalkCtrl($scope, $http, $location) {
-    var prezId = $location.search()['id'];
-    var jsonpUrl = backendUrl + "/talks/" + prezId + jsonpSuffix;
+function TalkCtrl($scope, $http, $routeParams) {
+    $scope.talkId = $routeParams.talkId;
+    var jsonpUrl = backendUrl + "/talks/" + $scope.talkId + jsonpSuffix;
 
     $http.jsonp(jsonpUrl).
         success(function(data) {

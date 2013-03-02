@@ -1,0 +1,34 @@
+
+    <div class='row'>
+        <div class="page-header">
+            <h1>{{speaker.firstName}} {{speaker.lastName}}</h1>
+            <h4>{{speaker.company}}</h4>
+        </div>
+
+        <div class="span3">
+            <img height="50%" width="50%" src="{{speaker.imageURI}}"/>
+        </div>
+        <div class="span9">
+            <table class="table table-striped table-bordered">
+                <tr >
+                    <td>{{speaker.bio}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <br/>
+    <div class='row'>
+        <div class="span12">
+            <h4>Talks</h4>
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th>Event</th>
+                    <th>Title</th>
+                </tr>
+                <tr ng-repeat="talk in speaker.talks">
+                    <td>{{talk.event}}</td>
+                    <td><a href="#talks/{{talk.presentationId}}">{{talk.title}}</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
