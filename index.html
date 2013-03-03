@@ -28,10 +28,10 @@
         <div class="container">
             <a target="_blank" href="http://devoxx.fr" class="brand">Devoxxfr 2013</a>
             <div class="nav-collapse">
-                <ul class="nav">
-                    <li><a href="#/schedule">Schedule</a></li>
-                    <li><a href="#/talks">Talks</a></li>
-                    <li><a href="#/speakers">Speakers</a></li>
+                <ul class="nav" ng-controller="NavCtrl">
+                    <li ng-class="navClass('schedule')"><a href="#/schedule">Schedule</a></li>
+                    <li ng-class="navClass('talks')"><a href="#/talks">Talks</a></li>
+                    <li ng-class="navClass('speakers')"><a href="#/speakers">Speakers</a></li>
                 </ul>
             </div>
         </div>

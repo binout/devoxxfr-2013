@@ -1,6 +1,13 @@
 var backendUrl = "https://devoxxmirror-laps33.rhcloud.com/rest";
 var jsonpSuffix = "?callback=JSON_CALLBACK";
 
+function NavCtrl($scope, $location) {
+    $scope.navClass = function (page) {
+        var currentRoute = $location.path().substring(1) || 'schedule';
+        return page === currentRoute ? 'active' : '';
+    };
+}
+
 function TalksCtrl($scope, $http) {
     $scope.talks = [];
     var jsonpUrl = backendUrl + "/talks" + jsonpSuffix;
