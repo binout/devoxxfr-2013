@@ -18,7 +18,7 @@
                 <th ng-class="selectedCls('tweethandle')" ng-click="changeSorting('tweethandle')">Twitter</th>
             </tr>
             <tr ng-repeat="speaker in speakers | filter:query | orderBy:sort.column:sort.descending">
-                <td><img height="48px" width="48px" src="{{speaker.imageURI}}"/></td>
+                <td><img height="48px" width="48px" ng-src="{{speaker.imageURI}}"/></td>
                 <td><a href="#/speakers/{{speaker.id}}">{{speaker.firstName}} {{speaker.lastName}}</a></td>
                 <td>{{speaker.company}}</td>
                 <td><a href="https://twitter.com/intent/tweet?screen_name={{speaker.tweethandle}}" class="twitter-mention-button" data-lang="en"><b>{{speaker.tweethandle}}</b></span></a></td>
