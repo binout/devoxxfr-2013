@@ -59,8 +59,9 @@ function SpeakerCtrl($scope, Speaker, $routeParams) {
     $scope.speaker = Speaker.get({speakerId: $routeParams.speakerId});
 }
 
-function ScheduleCtrl($scope, Schedule) {
+function ScheduleCtrl($scope, Schedule, Rooms) {
     $scope.dayone = Schedule.get({day: 1});
     $scope.daytwo = Schedule.get({day: 2});
     $scope.daythree = Schedule.get({day: 3});
+    $scope.rooms = Rooms.all();
 }

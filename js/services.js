@@ -22,3 +22,9 @@ devoxxMirror.factory('Schedule', function($resource){
         get : {method:'JSONP', params:{day:'day'}, isArray:true}
     });
 });
+
+devoxxMirror.factory('Rooms', function($resource){
+    return $resource(backendUrl + '/schedule/rooms', {callback:'JSON_CALLBACK'}, {
+        all : {method:'JSONP', isArray:true},
+    });
+});

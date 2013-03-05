@@ -1,14 +1,28 @@
 
     <div class='row'>
-        <form class="form-horizontal">
-            <div class="control-group">
-                <label class="control-label" for="inputQuery">Search :</label>
-
-                <div class="controls">
-                    <input ng-model="query" id="inputQuery" type="text" autofocus="autofocus" class="input-medium search-query"/>
+        <div class="span6">
+            <form class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label" for="inputQuery">Search :</label>
+                    <div class="controls">
+                        <input ng-model="query" id="inputQuery" type="text" autofocus="autofocus" class="input-medium search-query"/>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
+        <div class="span6">
+            <form class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label" for="inputQuery">Filter by room :</label>
+                    <div class="controls">
+                        <select ng-model="selectRoom">
+                            <option></option>
+                            <option ng-repeat="room in rooms">{{room.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
     <div class="row">
         <h3>Wednesday 27th March</h3>
@@ -20,7 +34,7 @@
                 <th>Talk</th>
                 <th>Speaker</th>
             </tr>
-            <tr ng-repeat="event in dayone | filter:query">
+            <tr ng-repeat="event in dayone | filter:query | filter:selectRoom">
                 <td>{{event.fromHour}}</td>
                 <td>{{event.toHour}}</td>
                 <td>{{event.room}}</td>
@@ -39,7 +53,7 @@
                 <th>Talk</th>
                 <th>Speaker</th>
             </tr>
-            <tr ng-repeat="event in daytwo | filter:query">
+            <tr ng-repeat="event in daytwo | filter:query | filter:selectRoom">
                 <td>{{event.fromHour}}</td>
                 <td>{{event.toHour}}</td>
                 <td>{{event.room}}</td>
@@ -58,7 +72,7 @@
                 <th>Talk</th>
                 <th>Speaker</th>
             </tr>
-            <tr ng-repeat="event in daythree | filter:query">
+            <tr ng-repeat="event in daythree | filter:query | filter:selectRoom">
                 <td>{{event.fromHour}}</td>
                 <td>{{event.toHour}}</td>
                 <td>{{event.room}}</td>
