@@ -1,4 +1,4 @@
-angular.module('devoxxfr-2013', []).
+angular.module('devoxxfr-2013', ['devoxxMirrorServices']).
     config(['$routeProvider', function($routeProvider) {
         $routeProvider.
             when('/speakers', {templateUrl: 'partials/speakers.html',   controller: SpeakersCtrl}).

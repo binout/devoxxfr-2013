@@ -8,17 +8,8 @@ function NavCtrl($scope, $location) {
     };
 }
 
-function TalksCtrl($scope, $http) {
-    $scope.talks = [];
-    var jsonpUrl = backendUrl + "/talks" + jsonpSuffix;
-
-    $http.jsonp(jsonpUrl).
-        success(function(data) {
-            $scope.talks = data;
-        }).
-        error(function(data) {
-            $scope.talks = data || "Request failed";
-        });
+function TalksCtrl($scope, Talk) {
+    $scope.talks = Talk.all();
 
     $scope.sort = {
         column: 'title',
@@ -85,18 +76,8 @@ function SpeakerCtrl($scope, $http, $routeParams) {
         });
 }
 
-function TalkCtrl($scope, $http, $routeParams) {
-    $scope.talkId = $routeParams.talkId;
-    var jsonpUrl = backendUrl + "/talks/" + $scope.talkId + jsonpSuffix;
-
-    $http.jsonp(jsonpUrl).
-        success(function(data) {
-            $scope.talk = data;
-        }).
-        error(function(data) {
-            $scope.talk = data || "Request failed";
-        });
-
+function TalkCtrl($scope, Talk, $routeParams) {
+    $scope.talk = Talk.get({talkId: $routeParams.talkId});
 }
 
 function ScheduleCtrl($scope, $http) {
