@@ -1,6 +1,8 @@
 /* jasmine specs for controllers go here */
 describe('Controllers', function() {
 
+    beforeEach(module('devoxxMirror'));
+
     beforeEach(function(){
         this.addMatchers({
             toEqualData: function(expected) {
@@ -11,7 +13,7 @@ describe('Controllers', function() {
 
     describe("TalksCtrl", function () {
         var scope, ctrl, $httpBackend;
-        var jsonpUrl = backendUrl + "/talks" + jsonpSuffix;
+        var jsonpUrl = backendUrl + "/talks" + "?callback=JSON_CALLBACK";
 
         beforeEach(inject(function (_$httpBackend_, $rootScope, $controller) {
             $httpBackend = _$httpBackend_;
