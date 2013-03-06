@@ -1,0 +1,58 @@
+
+<div class='row'>
+    <div class="page-header">
+        <h1>{{room.name}}</h1>
+        <h4>Capacity : {{room.capacity}}</h4>
+    </div>
+</div>
+<div class="row">
+    <h3>Wednesday 27th March</h3>
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Talk</th>
+            <th>Speaker</th>
+        </tr>
+        <tr ng-repeat="event in dayone | filter:query | filter:selectRoom">
+            <td>{{event.fromHour}}</td>
+            <td>{{event.toHour}}</td>
+            <td><a href="#/talks/{{event.presentationId}}">{{event.title}}</a></td>
+            <td><a href="#/speakers/{{event.speakerId}}">{{event.speaker}}</a></td>
+        </tr>
+    </table>
+</div>
+<div class="row">
+    <h3>Thursday 28th March</h3>
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Talk</th>
+            <th>Speaker</th>
+        </tr>
+        <tr ng-repeat="event in daytwo | filter:query | filter:selectRoom">
+            <td>{{event.fromHour}}</td>
+            <td>{{event.toHour}}</td>
+            <td><a href="#/talks/{{event.presentationId}}">{{event.title}}</a></td>
+            <td><a href="#/speakers/{{event.speakerId}}">{{event.speaker}}</a></td>
+        </tr>
+    </table>
+</div>
+<div class="row">
+    <h3>Friday 29th March</h3>
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Talk</th>
+            <th>Speaker</th>
+        </tr>
+        <tr ng-repeat="event in daythree | filter:query | filter:selectRoom">
+            <td>{{event.fromHour}}</td>
+            <td>{{event.toHour}}</td>
+            <td><a href="#/talks/{{event.presentationId}}">{{event.title}}</a></td>
+            <td><a href="#/speakers/{{event.speakerId}}">{{event.speaker}}</a></td>
+        </tr>
+    </table>
+</div>

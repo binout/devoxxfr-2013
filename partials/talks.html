@@ -1,0 +1,31 @@
+
+    <div class='row'>
+        <form class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label" for="inputQuery">Search :</label>
+
+                <div class="controls">
+                    <input ng-model="query" id="inputQuery" type="text" autofocus="autofocus" class="input-medium search-query"/>
+                </div>
+            </div>
+        </form>
+
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th ng-class="selectedCls('type')" ng-click="changeSorting('type')">Type</th>
+                <th ng-class="selectedCls('track')" ng-click="changeSorting('track')">Track</th>
+                <th ng-class="selectedCls('title')" ng-click="changeSorting('title')">Title</th>
+                <th ng-class="selectedCls('speaker')" ng-click="changeSorting('speaker')">Speaker</th>
+                <th ng-class="selectedCls('experience')" ng-click="changeSorting('experience')">Experience</th>
+                <th ng-class="selectedCls('language')" ng-click="changeSorting('language')">Language</th>
+            </tr>
+            <tr ng-repeat="talk in talks | filter:query | orderBy:sort.column:sort.descending">
+                <td>{{talk.type}}</td>
+                <td>{{talk.track}}</td>
+                <td><a href="#talks/{{talk.id}}">{{talk.title}}</a></td>
+                <td><a href="#speakers/{{talk.speakerId}}">{{talk.speaker}}</a></td>
+                <td>{{talk.experience}}</td>
+                <td><img height="32px" width="32px" ng-src="img/{{talk.language}}.png"/></td>
+            </tr>
+        </table>
+    </div>
