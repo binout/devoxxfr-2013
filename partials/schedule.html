@@ -37,7 +37,7 @@
             <tr ng-repeat="event in dayone | filter:query | filter:selectRoom">
                 <td>{{event.fromHour}}</td>
                 <td>{{event.toHour}}</td>
-                <td>{{event.room}}</td>
+                <td><a href="#/schedule/rooms/{{event.roomId}}">{{event.room}}</a></td>
                 <td><a href="#/talks/{{event.presentationId}}">{{event.title}}</a></td>
                 <td><a href="#/speakers/{{event.speakerId}}">{{event.speaker}}</a></td>
             </tr>
@@ -56,7 +56,7 @@
             <tr ng-repeat="event in daytwo | filter:query | filter:selectRoom">
                 <td>{{event.fromHour}}</td>
                 <td>{{event.toHour}}</td>
-                <td>{{event.room}}</td>
+                <td><a href="#/schedule/rooms/{{event.roomId}}">{{event.room}}</a></td>
                 <td><a href="#/talks/{{event.presentationId}}">{{event.title}}</a></td>
                 <td><a href="#/speakers/{{event.speakerId}}">{{event.speaker}}</a></td>
             </tr>
@@ -75,7 +75,7 @@
             <tr ng-repeat="event in daythree | filter:query | filter:selectRoom">
                 <td>{{event.fromHour}}</td>
                 <td>{{event.toHour}}</td>
-                <td>{{event.room}}</td>
+                <td><a href="#/schedule/rooms/{{event.roomId}}">{{event.room}}</a></td>
                 <td><a href="#/talks/{{event.presentationId}}">{{event.title}}</a></td>
                 <td><a href="#/speakers/{{event.speakerId}}">{{event.speaker}}</a></td>
             </tr>

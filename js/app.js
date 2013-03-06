@@ -8,6 +8,7 @@ angular.module('devoxxfr-2013', ['devoxxMirror']).
             when('/talks/:talkId', {templateUrl: 'partials/talk.html',   controller: TalkCtrl}).
 
             when('/schedule', {templateUrl: 'partials/schedule.html',   controller: ScheduleCtrl}).
+            when('/schedule/rooms/:roomId', {templateUrl: 'partials/room.html',   controller: ScheduleRoomCtrl}).
 
             otherwise({redirectTo: '/schedule'});
     }]);

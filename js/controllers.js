@@ -59,9 +59,16 @@ function SpeakerCtrl($scope, Speaker, $routeParams) {
     $scope.speaker = Speaker.get({speakerId: $routeParams.speakerId});
 }
 
-function ScheduleCtrl($scope, Schedule, Rooms) {
+function ScheduleCtrl($scope, Schedule, Room) {
     $scope.dayone = Schedule.get({day: 1});
     $scope.daytwo = Schedule.get({day: 2});
     $scope.daythree = Schedule.get({day: 3});
-    $scope.rooms = Rooms.all();
+    $scope.rooms = Room.all();
+}
+
+function ScheduleRoomCtrl($scope, Room, ScheduleRoom, $routeParams) {
+    $scope.room = Room.get({roomId: $routeParams.roomId});
+    $scope.dayone = ScheduleRoom.get({day: 1, roomId: $routeParams.roomId});
+    $scope.daytwo = ScheduleRoom.get({day: 2, roomId: $routeParams.roomId});
+    $scope.daythree = ScheduleRoom.get({day: 3, roomId: $routeParams.roomId});
 }
