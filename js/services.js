@@ -9,6 +9,12 @@ devoxxMirror.factory('Talk', function($resource){
     });
 });
 
+devoxxMirror.factory('TopTalk', function($resource){
+    return $resource(backendUrl + '/talks/top/:top', {callback:'JSON_CALLBACK'}, {
+        get : {method:'JSONP', params:{top:'top'}, isArray:true}
+    });
+});
+
 devoxxMirror.factory('Speaker', function($resource){
     return $resource(backendUrl + '/speakers/:speakerId', {callback:'JSON_CALLBACK'}, {
         all : {method:'JSONP', isArray:true},
