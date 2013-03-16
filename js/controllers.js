@@ -5,8 +5,9 @@ function NavCtrl($scope, $location) {
     };
 }
 
-function TalksCtrl($scope, Talk) {
+function TalksCtrl($scope, Talk, TopTalk) {
     $scope.talks = Talk.all();
+    $scope.topTalks = TopTalk.get({top : 3});
 
     $scope.sort = {
         column: 'title',
