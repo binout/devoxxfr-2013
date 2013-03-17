@@ -19,7 +19,7 @@
     <div class='row'>
         <div class="span11">
             <h1>{{talk.title}}</h1>
-            <h3><i>by <a href="#/speakers/{{talk.speakerId}}" >{{talk.speaker}}</a> </i></h3>
+            <h3><i>by </i><i ng-repeat="speaker in talk.speakers"><a href="#/speakers/{{speaker.speakerId}}" >{{speaker.speaker}}</a><span ng-show=" ! $last "> - </span></i></h3>
         </div>
         <div class="span1">
             <br/><br/><br/>
