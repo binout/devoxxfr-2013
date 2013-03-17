@@ -29,8 +29,14 @@ function TalksCtrl($scope, Talk, TopTalk) {
     }
 }
 
-function TalkCtrl($scope, Talk, $routeParams) {
-    $scope.talk = Talk.get({talkId: $routeParams.talkId});
+function TalkCtrl($scope, Talk, TalkPoll, TalkPollSize, $routeParams) {
+    var id = $routeParams.talkId;
+    $scope.talk = Talk.get({talkId: id});
+    $scope.poll = TalkPollSize.get({talkId: id});
+
+    $scope.vote = function () {
+        $scope.poll = TalkPoll.get({talkId: id});
+    }
 }
 
 function SpeakersCtrl($scope, Speaker) {

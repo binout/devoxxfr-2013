@@ -15,6 +15,18 @@ devoxxMirror.factory('TopTalk', function($resource){
     });
 });
 
+devoxxMirror.factory('TalkPoll', function($resource){
+    return $resource(backendUrl + '/talks/:talkId/poll', {callback:'JSON_CALLBACK'}, {
+        get : {method:'JSONP', params:{talkId:'talkId'}}
+    });
+});
+
+devoxxMirror.factory('TalkPollSize', function($resource){
+    return $resource(backendUrl + '/talks/:talkId/pollsize', {callback:'JSON_CALLBACK'}, {
+        get : {method:'JSONP', params:{talkId:'talkId'}}
+    });
+});
+
 devoxxMirror.factory('Speaker', function($resource){
     return $resource(backendUrl + '/speakers/:speakerId', {callback:'JSON_CALLBACK'}, {
         all : {method:'JSONP', isArray:true},

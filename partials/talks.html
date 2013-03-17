@@ -17,7 +17,7 @@
                 <tr ng-repeat="top in topTalks">
                     <td><span class="badge">{{$index+1}}</span></td>
                     <td><a href="#talks/{{top.id}}">{{top.title}}</a></td>
-                    <td><button class="btn btn-small"><i class="icon-thumbs-up"></i>{{top.nbVotes}}</button></td>
+                    <td><button class="btn btn-small disabled"><i class="icon-thumbs-up"></i>{{top.nbVotes}}</button></td>
                 </tr>
             </table>
         </div>
