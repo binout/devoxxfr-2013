@@ -36,7 +36,7 @@
                 <td>{{talk.type}}</td>
                 <td>{{talk.track}}</td>
                 <td><a href="#talks/{{talk.id}}">{{talk.title}}</a></td>
-                <td><a href="#speakers/{{talk.speakerId}}">{{talk.speaker}}</a></td>
+                <td><i ng-repeat="speaker in talk.speakers"><a href="#speakers/{{speaker.speakerId}}">{{speaker.speaker}}</a><span ng-show=" ! $last ">, </span></i></td>
                 <td>{{talk.experience}}</td>
                 <td><img height="32px" width="32px" ng-src="img/{{talk.language}}.png"/></td>
             </tr>
