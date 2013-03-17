@@ -5,6 +5,10 @@ function NavCtrl($scope, $location) {
     };
 }
 
+function TopTalksCtrl($scope, TopTalk) {
+    $scope.topTalks = TopTalk.get({top : 50});
+}
+
 function TalksCtrl($scope, Talk, TopTalk) {
     $scope.talks = Talk.all();
     $scope.topTalks = TopTalk.get({top : 3});
